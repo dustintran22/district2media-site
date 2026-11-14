@@ -1,0 +1,12 @@
+{
+  // Cloudflare: serves the static site in ./public
+  // "name" must match the project name in the Cloudflare dashboard.
+  "name": "district2media-site",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}

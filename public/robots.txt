@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://district2media.com/sitemap.xml
