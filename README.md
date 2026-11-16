@@ -2,11 +2,25 @@
 
 Website for District 2 Media. Plain HTML, CSS and JavaScript in `public/`, no build step, hosted on Cloudflare.
 
-## Files
-- `public/index.html`: the one-page site (hero, services, who we serve, work, process, about, contact)
-- `public/assets/css/style.css`: all styles; colors and fonts are the variables at the top
-- `public/assets/js/site.js`: menu, viewfinder animation, contact form
-- `public/assets/img/`: logo (white on transparent), icons, promo video + poster, link-preview image (`og.jpg`), work screenshots
+## Pages
+| URL | What's on it |
+|---|---|
+| `/` | Hero video, service tiles, two work highlights, call to action |
+| `/services/` | One section per service with "What's included" and a quick-jump bar |
+| `/work/` | Case studies (Pho Sapa, Dustin Transforms) |
+| `/about/` | Our approach, who we work with, how it works |
+| `/contact/` | Project inquiry form |
+
+The menu has dropdowns (Services, Work, About) that link straight to each section.
+
+## Editing pages
+All pages are generated from `tools/build.py`, which holds the shared menu, footer and the page content (services, case studies, process steps). Edit it, then run:
+
+```bash
+python3 tools/build.py
+```
+
+and commit the regenerated files in `public/`. Styles are in `public/assets/css/style.css`; menu, video and form behavior in `public/assets/js/site.js`.
 
 ## Before going live
 1. **Contact form:** connected. Inquiries go to info@district2media.com through Web3Forms (account login: info@district2media.com). To change the inbox, create a key for the new address and replace `WEB3FORMS_KEY` in `public/assets/js/site.js`.

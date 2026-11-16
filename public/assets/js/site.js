@@ -8,17 +8,61 @@ var CONTACT_EMAIL = 'info@district2media.com';
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Mobile menu
+  // Menu: hamburger on phones, dropdown submenus everywhere
   var toggle = document.querySelector('.menu-toggle');
   var nav = document.getElementById('nav');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.has-menu'));
+  function closeAll(except) {
+    items.forEach(function (it) {
+      if (it === except) return;
+      it.classList.remove('open');
+      var b = it.querySelector('.sub-toggle'); if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  items.forEach(function (it) {
+    var b = it.querySelector('.sub-toggle');
+    b.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      var open = !it.classList.contains('open');
+      closeAll(it);
+      it.classList.toggle('open', open);
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (ev) { if (!ev.target.closest('.has-menu')) closeAll(); });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Escape') return;
+    var openItem = document.querySelector('.has-menu.open');
+    closeAll();
+    if (openItem) openItem.querySelector('.sub-toggle').focus();
+  });
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!open) closeAll();
     });
     nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+      if (e.target.closest('a')) { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open menu'); closeAll(); }
     });
+  }
+
+  // Quick-jump bar: highlight the section being read
+  var sub = document.querySelector('.subnav');
+  if (sub && 'IntersectionObserver' in window) {
+    var links = Array.prototype.slice.call(sub.querySelectorAll('a'));
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var a = byId[en.target.id];
+        if (a) { a.classList.add('active'); a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 
   // Viewfinder: running timecode and the "Now shooting" word
