@@ -2,7 +2,7 @@
 //
 // CONTACT FORM SETUP: create a free Web3Forms access key at https://web3forms.com with the
 // inbox that should receive leads (e.g. info@district2media.com) and paste it below.
-var WEB3FORMS_KEY = 'PASTE-YOUR-WEB3FORMS-ACCESS-KEY-HERE';
+var WEB3FORMS_KEY = 'd9e5a454-eea7-45cf-a2b0-807fce207384';
 var CONTACT_EMAIL = 'info@district2media.com';
 
 (function () {
