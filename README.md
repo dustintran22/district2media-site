@@ -10,7 +10,7 @@ Website for District 2 Media. Plain HTML, CSS and JavaScript in `public/`, no bu
 
 ## Before going live
 1. **Contact form:** get a free access key at https://web3forms.com for the inbox that should receive leads, and paste it into `WEB3FORMS_KEY` at the top of `public/assets/js/site.js`. Until then the form tells visitors to email instead.
-2. **Contact email:** `hello@district2media.com` appears in `index.html` and `site.js` (`CONTACT_EMAIL`). Change both if you use a different address.
+2. **Contact email:** `info@district2media.com` appears in `index.html` and `site.js` (`CONTACT_EMAIL`). Change both if you use a different address.
 3. **Pho Sapa case study:** confirm the owner is happy to be featured.
 
 ## Deploy on Cloudflare
