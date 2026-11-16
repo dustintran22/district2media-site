@@ -10,9 +10,11 @@
   <meta property="og:title" content="District 2 Media">
   <meta property="og:description" content="Content, social and websites for restaurants and local businesses.">
   <meta property="og:url" content="https://district2media.com/">
-  <meta property="og:image" content="https://district2media.com/assets/img/work-phosapa.jpg">
+  <meta property="og:image" content="https://district2media.com/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0b0b0c">
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-64.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
   <script>document.documentElement.classList.add('js')</script>
@@ -21,7 +23,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a class="logo" href="/" aria-label="District 2 Media home"><span class="logo-mark">D<b>2</b>M</span><span class="logo-word">District 2 Media</span></a>
+    <a class="logo" href="/" aria-label="District 2 Media home"><img src="/assets/img/logo.png" srcset="/assets/img/logo.png 1x, /assets/img/logo@2x.png 2x" alt="District 2 Media" width="92" height="34"></a>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
     </button>
@@ -41,24 +43,18 @@
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow label"><span class="rec"></span>Content · Social · Websites</div>
-        <h1 class="display h1">Get seen.<br>Get <span class="amber">chosen.</span></h1>
+        <h1 class="display h1">Get seen.<br>Get <span class="hl">chosen.</span></h1>
         <p class="lead">District 2 Media makes short-form video, photos, social content and websites for restaurants and local businesses, so the people scrolling past become the people walking in.</p>
         <div class="actions">
           <a class="btn" href="#contact">Start a project <span class="arrow">→</span></a>
           <a class="btn btn-ghost" href="#work">See the work</a>
         </div>
       </div>
-      <div class="viewfinder" aria-hidden="true">
-        <div class="vf-corner tl"></div><div class="vf-corner tr"></div><div class="vf-corner bl"></div><div class="vf-corner br"></div>
-        <div class="vf-top"><span class="vf-rec"><span class="rec"></span>REC</span><span>4K · 24 FPS</span></div>
-        <div class="vf-center">
-          <div>
-            <span class="small label">Now shooting</span>
-            <div class="vf-word"><span id="vf-word">Restaurants</span></div>
-          </div>
-        </div>
-        <div class="vf-cross"></div>
-        <div class="vf-bottom"><span id="timecode">00:00:00:00</span><span class="vf-battery"><i></i><i></i><i></i><i></i></span></div>
+      <div class="viewfinder">
+        <video id="promo" src="/assets/img/promo.mp4" poster="/assets/img/promo-poster.jpg" width="720" height="1280" autoplay muted loop playsinline preload="auto" aria-label="District 2 Media promo: behind the scenes at restaurant shoots"></video>
+        <div class="vf-corner tl" aria-hidden="true"></div><div class="vf-corner tr" aria-hidden="true"></div><div class="vf-corner bl" aria-hidden="true"></div><div class="vf-corner br" aria-hidden="true"></div>
+        <div class="vf-top" aria-hidden="true"><span class="vf-rec"><span class="rec"></span>REC</span><span>4K · 24 FPS</span></div>
+        <div class="vf-bottom"><span id="timecode" aria-hidden="true">00:00:00:00</span><button type="button" class="vf-sound" id="vf-sound" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path id="vf-sound-waves" d="M23 9l-6 6M17 9l6 6"/></svg><span id="vf-sound-label">Sound</span></button></div>
       </div>
     </div>
   </section>
@@ -122,7 +118,7 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <h2 class="display h2">Built for<br>local <span class="amber">business</span></h2>
+        <h2 class="display h2">Built for<br>local <span class="hl">business</span></h2>
         <p class="lead">Owner-run places where the food, the space and the people are the story. If customers can walk in, book or order, we can help them find you.</p>
       </div>
       <div class="who reveal">
@@ -215,7 +211,7 @@
   <section class="section" id="about">
     <div class="wrap about">
       <div class="reveal">
-        <h2 class="display h2">Small team.<br><span class="amber">Full stack.</span></h2>
+        <h2 class="display h2">Small team.<br><span class="hl">Full stack.</span></h2>
       </div>
       <div class="reveal">
         <p class="lead">District 2 Media is run by Dustin Tran, a creator and entrepreneur who shoots the content, builds the websites and wires up the tools behind them.</p>
@@ -287,11 +283,11 @@
 
 <footer class="footer">
   <div class="wrap">
-    <a class="logo" href="/"><span class="logo-mark">D<b>2</b>M</span><span class="logo-word">District 2 Media</span></a>
+    <a class="logo" href="/" aria-label="District 2 Media home"><img src="/assets/img/logo.png" srcset="/assets/img/logo.png 1x, /assets/img/logo@2x.png 2x" alt="District 2 Media" width="92" height="34"></a>
     <nav><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
     <span>© <span id="year">2026</span> District 2 Media</span>
   </div>
-  <div class="wrap"><div class="big-sign" aria-hidden="true">District 2</div></div>
+  <div class="wrap"><div class="big-sign" aria-hidden="true"><img src="/assets/img/logo@2x.png" alt="" width="1200" height="445" loading="lazy"></div></div>
 </footer>
 
 <script src="/assets/js/site.js" defer></script>

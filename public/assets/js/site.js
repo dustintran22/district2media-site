@@ -24,26 +24,28 @@ var CONTACT_EMAIL = 'hello@district2media.com';
   // Viewfinder: running timecode and the "Now shooting" word
   var tc = document.getElementById('timecode');
   if (tc) {
+    var vidEl = document.getElementById('promo');
     var start = Date.now();
     var pad = function (n) { return String(n).padStart(2, '0'); };
     var tick = function () {
-      var ms = Date.now() - start, s = Math.floor(ms / 1000);
+      var ms = vidEl && !isNaN(vidEl.currentTime) ? vidEl.currentTime * 1000 : Date.now() - start, s = Math.floor(ms / 1000);
       tc.textContent = pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60) + ':' + pad(Math.floor((ms % 1000) / 1000 * 24));
     };
     tick();
     if (!reduce) setInterval(tick, 1000 / 24);
   }
-  var word = document.getElementById('vf-word');
-  if (word && !reduce) {
-    var words = ['Restaurants', 'Cafés', 'Salons', 'Gyms', 'Coaches', 'Local shops', 'Your business'];
-    var i = 0;
-    setInterval(function () {
-      i = (i + 1) % words.length;
-      word.classList.remove('swap');
-      void word.offsetWidth;
-      word.textContent = words[i];
-      word.classList.add('swap');
-    }, 2200);
+  // Promo video: timecode follows the video; Sound button unmutes
+  var vid = document.getElementById('promo');
+  var snd = document.getElementById('vf-sound');
+  if (vid && snd) {
+    snd.addEventListener('click', function () {
+      vid.muted = !vid.muted;
+      if (!vid.muted) { vid.play().catch(function () {}); }
+      snd.setAttribute('aria-pressed', vid.muted ? 'false' : 'true');
+      document.getElementById('vf-sound-label').textContent = vid.muted ? 'Sound' : 'Mute';
+      document.getElementById('vf-sound-waves').setAttribute('d', vid.muted ? 'M23 9l-6 6M17 9l6 6' : 'M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14');
+    });
+    if (reduce) { vid.removeAttribute('autoplay'); vid.pause(); vid.controls = true; }
   }
 
   // Reveal on scroll (content is visible without JS; see .js .reveal in CSS)
