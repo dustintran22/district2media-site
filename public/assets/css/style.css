@@ -89,7 +89,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 /* Hero */
 .hero { padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 8vw, 100px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 380px); gap: clamp(40px, 5vw, 72px); align-items: center; }
-.hero h1 { margin-bottom: 28px; }
+.hero h1 { margin-bottom: 18px; }
+.tagline { font-stretch: 112%; font-weight: 700; text-transform: none; letter-spacing: -.005em; line-height: 1.15; font-size: clamp(20px, 4.6cqi, 38px); margin: 0 0 22px; color: var(--white); }
 .hero .lead { margin-bottom: 36px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
