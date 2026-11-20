@@ -125,7 +125,8 @@ var CONTACT_EMAIL = 'info@district2media.com';
       return;
     }
     if (f.botcheck.checked) return;
-    var needs = Array.prototype.map.call(form.querySelectorAll('input[name="needs"]:checked'), function (c) { return c.value; }).join(', ') || 'Not specified';
+    var picked = function (n) { return Array.prototype.map.call(form.querySelectorAll('input[name="' + n + '"]:checked'), function (c) { return c.value; }).join(', ') || 'Not specified'; };
+    var needs = picked('needs'), goals = picked('goals');
     if (WEB3FORMS_KEY.indexOf('PASTE-') === 0) {
       status.className = 'form-status err';
       status.innerHTML = 'This form isn’t connected yet. Email <a class="text-link" href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a> instead.';
@@ -141,15 +142,15 @@ var CONTACT_EMAIL = 'info@district2media.com';
         subject: 'New project inquiry: ' + biz,
         from_name: 'District 2 Media website',
         replyto: email,
-        'Name': name, 'Business': biz, 'Email': email, 'Phone': f.phone.value.trim(),
-        'Needs': needs, 'Monthly budget': f.budget.value, 'Website / Instagram': f.link.value.trim(), 'Message': msg
+        'Name': name, 'Business': biz, 'Type of business': f.btype ? f.btype.value : '', 'Email': email, 'Phone': f.phone.value.trim(),
+        'Looking for': needs, 'Main goals': goals, 'Monthly budget': f.budget.value, 'Website / Instagram': f.link.value.trim(), 'Message': msg
       })
     })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === false) throw new Error('send'); }); })
       .then(function () {
         form.reset();
         status.className = 'form-status ok';
-        status.textContent = 'Got it. We’ll reply within one business day.';
+        status.textContent = 'Thank you. We’ll reply within one business day to set up a strategy conversation.';
       })
       .catch(function () {
         status.className = 'form-status err';

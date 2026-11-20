@@ -3,15 +3,18 @@
 Website for District 2 Media. Plain HTML, CSS and JavaScript in `public/`, no build step, hosted on Cloudflare.
 
 ## Pages
+Positioning: strategic content marketing for restaurants and hospitality brands. Tagline: "Strategic Content. Measurable Growth."
+
 | URL | What's on it |
 |---|---|
-| `/` | Hero video, service tiles, two work highlights, call to action |
-| `/services/` | One section per service with "What's included" and a quick-jump bar |
-| `/work/` | Case studies (Pho Sapa, Dustin Transforms) |
-| `/about/` | Our approach, who we work with, how it works |
-| `/contact/` | Project inquiry form |
+| `/` | Hero ("More than content. A strategy for growth."), not-a-production-company comparison, five pillars, services as one system, monthly partnership cycle, featured case, call to action |
+| `/approach/` | The five content pillars (Appetite, Authority, Experience, Connection, Conversion) and how a partnership works |
+| `/services/` | Services grouped as Plan, Make, Share, Measure, plus monthly partnerships |
+| `/work/` | Case studies: hospitality first, then other work |
+| `/about/` | Founder-led, strategy first; who we work with |
+| `/contact/` | Inquiry form: business type, what they're looking for, goals, budget |
 
-The menu has dropdowns (Services, Work, About) that link straight to each section.
+Menus: Approach, Services, Work and About have dropdowns that link straight to each section.
 
 ## Editing pages
 All pages are generated from `tools/build.py`, which holds the shared menu, footer and the page content (services, case studies, process steps). Edit it, then run:
